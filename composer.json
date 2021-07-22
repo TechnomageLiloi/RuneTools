@@ -1,0 +1,18 @@
+{
+  "name": "anton-moskalenko/php-tools",
+  "license": "Apache-2.0",
+  "description": "Models, collections, various managers, etc.",
+  "require": {
+    "php": "^7.0"
+  },
+  "type": "library",
+  "keywords": [
+    "php-tools"
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Liloi\\Tools\\": "Sources/"
+    }
+  }
+}
