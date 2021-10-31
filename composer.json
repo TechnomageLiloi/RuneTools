@@ -3,7 +3,7 @@
   "license": "Apache-2.0",
   "description": "Models, collections, various managers, etc.",
   "require": {
-    "php": "^8.0"
+    "php": "^7.0 || ^8.0"
   },
   "type": "library",
   "keywords": [
