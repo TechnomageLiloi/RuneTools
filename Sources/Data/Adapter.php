@@ -2,40 +2,29 @@
 
 namespace Liloi\Tools\Data;
 
-class Adapter
+/**
+ * Abstract data adapter.
+ * @package Liloi\Tools\Data
+ */
+abstract class Adapter
 {
     /**
      * Instance of adapter.
      *
      * @var Adapter
      */
-    private static $instance = null;
+    protected static ?Adapter $instance = null;
 
     /**
-     * Connection with MySql database.
-     *
-     * @var \mysqli
+     * Connection with database.
      */
-    private $connection = null;
+    protected $connection = null;
 
     /**
-     * Construct adapter object.
-     *
-     * @param \mysqli $connection Connection with MySql database.
+     * Get connection with database.
      */
-    private function __construct(\mysqli $connection) {
-        $this->connection = $connection;
-    }
-
-    public function connectionGet() {
+    public function getConnection() {
         return $this->connection;
-    }
-
-    /**
-     * Destruct adapter object.
-     */
-    public function __destruct() {
-        $this->connection->close();
     }
 
     /**
@@ -44,24 +33,7 @@ class Adapter
      * @return Adapter Instance of adapter.
      * @throws \Exception Something wrong with database.
      */
-    public static function get(): self
-    {
-        if(null === self::$instance)
-        {
-            $connection = \mysqli_connect("", "", "", "");
-
-            if(!$connection) {
-                // @TODO Change exception at php-judex.
-                throw new \Exception('Something wrong with database.');
-            }
-
-            $connection->set_charset('utf8');
-
-            self::$instance = new self($connection);
-        }
-
-        return self::$instance;
-    }
+    abstract public static function get(): self;
 
     /**
      * Get info in associative array form.
