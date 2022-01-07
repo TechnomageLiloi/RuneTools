@@ -28,14 +28,6 @@ abstract class Adapter
     }
 
     /**
-     * Get instance of adapter.
-     *
-     * @return Adapter Instance of adapter.
-     * @throws \Exception Something wrong with database.
-     */
-    abstract public static function get(): self;
-
-    /**
      * Get info in associative array form.
      *
      * @param string $query Request query.
