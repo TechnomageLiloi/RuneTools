@@ -1,11 +1,11 @@
 <?php
 
-namespace Library\Data;
+namespace Liloi\Tools\Data\MySql;
 
 /**
  * Abstract data adapter.
  */
-class MysqlAdapter
+class Adapter
 {
     /**
      * Instance of adapter.
