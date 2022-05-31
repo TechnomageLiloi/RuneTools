@@ -1,0 +1,20 @@
+<?php
+
+namespace Liloi\Tools\Data;
+
+/**
+ * IConnection interface.
+ *
+ * @package Liloi\Tools\Data
+ */
+interface IConnection
+{
+    /**
+     * Data request.
+     *
+     * @param mixed $command Data request.
+     * @param mixed ...$data Additional data parameters.
+     * @return mixed Data response.
+     */
+    public function request($command, ...$data);
+}
