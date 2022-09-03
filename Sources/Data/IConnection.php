@@ -20,8 +20,7 @@ interface IConnection
      * Data request.
      *
      * @param mixed $command Data request.
-     * @param mixed ...$data Additional data parameters.
      * @return mixed Data response.
      */
-    public function request($command, ...$data);
+    public function request($command);
 }

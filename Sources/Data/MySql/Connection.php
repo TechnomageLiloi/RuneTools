@@ -56,7 +56,7 @@ class Connection implements IConnection
     /**
      * @inheritDoc
      */
-    public function request($command, ...$data)
+    public function request($command)
     {
         return $this->connection->query($command);
     }
