@@ -12,6 +12,8 @@ class AdapterTest extends TestCase
 {
     private ?IConnection $connection = null;
 
+    private ?Adapter $adapter = null;
+
     public function getConnection(): IConnection
     {
         if(is_null($this->connection))
@@ -29,17 +31,22 @@ class AdapterTest extends TestCase
 
     public function setUp(): void
     {
-        Adapter::setConnection($this->getConnection());
+        $this->adapter = Adapter::create($this->getConnection());
+    }
+
+    public function getAdapter(): Adapter
+    {
+        return $this->adapter;
     }
 
     public function testSetGetConnection(): void
     {
-        $this->assertEquals($this->getConnection(), Adapter::getConnection());
+        $this->assertEquals($this->getConnection(), $this->getAdapter()->getConnection());
     }
 
     public function testRequest(): void
     {
-        $result = Adapter::request('select database() as the_db');
+        $result = $this->getAdapter()->request('select database() as the_db');
         $row = $result->fetch_assoc();
         $this->assertEquals('rune', $row['the_db']);
     }

@@ -7,23 +7,33 @@ namespace Liloi\Tools\Data;
  */
 class Adapter
 {
-    static private ?IConnection $connection = null;
+    private ?IConnection $connection = null;
 
-    public static function getConnection(): IConnection
+    public function getConnection(): IConnection
     {
-        return self::$connection;
+        return $this->connection;
     }
 
-    public static function setConnection(IConnection $connection): void
+    public function setConnection(IConnection $connection): void
     {
-        self::$connection = $connection;
+        $this->connection = $connection;
     }
 
     /**
      * @inheritDoc
      */
-    public static function request($command)
+    public function request($command)
     {
-        return self::$connection->request($command);
+        return $this->connection->request($command);
+    }
+
+    private function __construct(IConnection $connection)
+    {
+        $this->setConnection($connection);
+    }
+
+    static public function create(IConnection $connection)
+    {
+        return new self($connection);
     }
 }
