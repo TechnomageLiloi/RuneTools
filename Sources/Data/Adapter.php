@@ -18,4 +18,12 @@ class Adapter
     {
         self::$connection = $connection;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public static function request($command)
+    {
+        return self::$connection->request($command);
+    }
 }

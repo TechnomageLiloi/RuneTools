@@ -2,7 +2,6 @@
 
 namespace Liloi\Tools\Data;
 
-use Liloi\Tools\Data\Adapter;
 use PHPUnit\Framework\TestCase;
 use Liloi\Tools\Data\MySql\Connection;
 
@@ -28,9 +27,20 @@ class AdapterTest extends TestCase
         return $this->connection;
     }
 
-    public function testSetGetConnection(): void
+    public function setUp(): void
     {
         Adapter::setConnection($this->getConnection());
+    }
+
+    public function testSetGetConnection(): void
+    {
         $this->assertEquals($this->getConnection(), Adapter::getConnection());
+    }
+
+    public function testRequest(): void
+    {
+        $result = Adapter::request('select database() as the_db');
+        $row = $result->fetch_assoc();
+        $this->assertEquals('rune', $row['the_db']);
     }
 }
