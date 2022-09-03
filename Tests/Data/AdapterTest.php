@@ -32,6 +32,13 @@ class AdapterTest extends TestCase
     public function setUp(): void
     {
         $this->adapter = Adapter::create($this->getConnection());
+        $this->getAdapter()->request('drop table if exists test');
+        $this->getAdapter()->request('create table test(
+            key_record bigint unsigned not null,
+            title varchar(250) not null,
+            summary text not null,
+            primary key(key_record) 
+        );');
     }
 
     public function getAdapter(): Adapter
