@@ -73,4 +73,26 @@ class AdapterTest extends TestCase
         $this->assertEquals('Test', $row['title']);
         $this->assertEquals('Test', $row['summary']);
     }
+
+    public function testUpdate(): void
+    {
+        $this->getAdapter()->insert('test', [
+            'key_record' => 1,
+            'title' => 'Test',
+            'summary' => 'Test'
+        ]);
+
+        $this->getAdapter()->update('test', [
+            'key_record' => 1,
+            'title' => 'Test New',
+            'summary' => 'Test New'
+        ], sprintf('key_record=%s', 1));
+
+        $result = $this->getAdapter()->request('select * from test;');
+        $row = $result->fetch_assoc();
+
+        $this->assertEquals(1, $row['key_record']);
+        $this->assertEquals('Test New', $row['title']);
+        $this->assertEquals('Test New', $row['summary']);
+    }
 }

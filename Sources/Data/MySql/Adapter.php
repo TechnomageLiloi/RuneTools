@@ -33,4 +33,28 @@ class Adapter extends DataAdapter
 
         $this->getConnection()->request($query);
     }
+
+    /**
+     * Update tuple in table.
+     *
+     * @param string $table Table name.
+     * @param array $params Column values.
+     * @param string $where Where update.
+     */
+    public function update(string $table, array $params, string $where) {
+
+        $data = [];
+        foreach ($params as $k => $v) {
+            $data[] = sprintf("%s = '%s'", $k, $v);
+        }
+
+        $query = sprintf(
+            'update %s set %s where %s',
+            $table,
+            implode(', ', $data),
+            $where
+        );
+
+        $this->getConnection()->request($query);
+    }
 }
