@@ -111,4 +111,19 @@ class AdapterTest extends TestCase
 
         $this->assertNull($row);
     }
+
+    public function testGetRow(): void
+    {
+        $this->getAdapter()->insert('test', [
+            'key_record' => 1,
+            'title' => 'Test',
+            'summary' => 'Test'
+        ]);
+
+        $row = $this->getAdapter()->getRow('select * from test;');
+
+        $this->assertEquals(1, $row['key_record']);
+        $this->assertEquals('Test', $row['title']);
+        $this->assertEquals('Test', $row['summary']);
+    }
 }

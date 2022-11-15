@@ -69,4 +69,20 @@ class Adapter extends DataAdapter
         $query = sprintf('delete from %s where %s', $table, $where);
         $this->getConnection()->request($query);
     }
+
+    /**
+     * Get info in row array form.
+     *
+     * @param string $query Request query.
+     * @return array Row array form.
+     */
+    public function getRow(string $query): array {
+        $request = $this->getConnection()->request($query);
+
+        if(!$request->num_rows) {
+            return [];
+        }
+
+        return $request->fetch_assoc();
+    }
 }
