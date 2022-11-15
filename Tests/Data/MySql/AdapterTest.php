@@ -57,4 +57,20 @@ class AdapterTest extends TestCase
         $row = $result->fetch_assoc();
         $this->assertEquals('rune', $row['the_db']);
     }
+
+    public function testInsert(): void
+    {
+        $this->getAdapter()->insert('test', [
+            'key_record' => 1,
+            'title' => 'Test',
+            'summary' => 'Test'
+        ]);
+
+        $result = $this->getAdapter()->request('select * from test;');
+        $row = $result->fetch_assoc();
+
+        $this->assertEquals(1, $row['key_record']);
+        $this->assertEquals('Test', $row['title']);
+        $this->assertEquals('Test', $row['summary']);
+    }
 }

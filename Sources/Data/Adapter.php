@@ -7,7 +7,7 @@ use Judex\Assert;
 /**
  * Abstract data adapter.
  */
-class Adapter
+abstract class Adapter
 {
     private ?IConnection $connection = null;
 
