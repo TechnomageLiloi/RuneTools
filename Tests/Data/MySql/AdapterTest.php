@@ -95,4 +95,20 @@ class AdapterTest extends TestCase
         $this->assertEquals('Test New', $row['title']);
         $this->assertEquals('Test New', $row['summary']);
     }
+
+    public function testRemove(): void
+    {
+        $this->getAdapter()->insert('test', [
+            'key_record' => 1,
+            'title' => 'Test',
+            'summary' => 'Test'
+        ]);
+
+        $this->getAdapter()->delete('test', sprintf('key_record=%s', 1));
+
+        $result = $this->getAdapter()->request('select * from test;');
+        $row = $result->fetch_assoc();
+
+        $this->assertNull($row);
+    }
 }

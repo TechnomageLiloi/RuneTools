@@ -39,7 +39,7 @@ class Adapter extends DataAdapter
      *
      * @param string $table Table name.
      * @param array $params Column values.
-     * @param string $where Where update.
+     * @param string $where What tuples to update.
      */
     public function update(string $table, array $params, string $where) {
 
@@ -55,6 +55,18 @@ class Adapter extends DataAdapter
             $where
         );
 
+        $this->getConnection()->request($query);
+    }
+
+    /**
+     * Delete tuple from table.
+     *
+     * @param string $table Table name.
+     * @param string $where What tuples to delete.
+     */
+    public function delete(string $table, string $where): void
+    {
+        $query = sprintf('delete from %s where %s', $table, $where);
         $this->getConnection()->request($query);
     }
 }
