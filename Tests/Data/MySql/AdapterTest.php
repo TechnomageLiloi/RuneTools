@@ -1,9 +1,9 @@
 <?php
 
-namespace Liloi\Tools\Data;
+namespace Liloi\Tools\Data\MySql;
 
 use PHPUnit\Framework\TestCase;
-use Liloi\Tools\Data\MySql\Connection;
+use Liloi\Tools\Data\IConnection;
 
 /**
  * Test mysql adapter set.
