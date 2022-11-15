@@ -169,4 +169,17 @@ class AdapterTest extends TestCase
         $this->assertEquals('Test', $row[0]);
         $this->assertEquals('Test2', $row[1]);
     }
+
+    public function testSingle(): void
+    {
+        $this->getAdapter()->insert('test', [
+            'key_record' => 1,
+            'title' => 'Test',
+            'summary' => 'Test'
+        ]);
+
+        $row = $this->getAdapter()->getSingle('select title from test;');
+
+        $this->assertEquals('Test', $row);
+    }
 }

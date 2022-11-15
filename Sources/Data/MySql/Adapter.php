@@ -129,4 +129,25 @@ class Adapter extends DataAdapter
 
         return $list;
     }
+
+    /**
+     * Get single value.
+     *
+     * @param string $query Request query.
+     * @return mixed Single value from database.
+     */
+    public function getSingle(string $query) {
+        $request = $this->getConnection()->request($query);
+
+        if(!$request) {
+            return false;
+        }
+
+        if(!$request->num_rows) {
+            return false;
+        }
+
+        $row = $request->fetch_assoc();
+        return reset($row);
+    }
 }
