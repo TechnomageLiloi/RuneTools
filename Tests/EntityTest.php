@@ -17,5 +17,7 @@ class EntityTest extends TestCase
 
         $entity = Entity::create($data);
         $this->assertEquals($data, $entity->get());
+        $this->assertEquals($data['a'], $entity->getField('a'));
+        $this->assertEquals($data['b'], $entity->getField('b'));
     }
 }

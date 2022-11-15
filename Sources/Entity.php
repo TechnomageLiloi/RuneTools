@@ -54,4 +54,15 @@ class Entity
     {
         return $this->data;
     }
+
+    /**
+     * Get field from data.
+     *
+     * @param string $key Field key.
+     * @return mixed Field data.
+     */
+    public function getField(string $key)
+    {
+        return $this->data[$key];
+    }
 }
