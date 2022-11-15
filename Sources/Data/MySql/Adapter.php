@@ -107,4 +107,26 @@ class Adapter extends DataAdapter
 
         return $list;
     }
+
+    /**
+     * Get info in associative column form.
+     *
+     * @param string $query Request query.
+     * @return array Associative array form.
+     */
+    public function getColumn(string $query): array {
+        $request = $this->getConnection()->request($query);
+
+        if(!$request) {
+            return [];
+        }
+
+        $list = [];
+
+        while($row = $request->fetch_assoc()) {
+            $list[] = reset($row);
+        }
+
+        return $list;
+    }
 }
