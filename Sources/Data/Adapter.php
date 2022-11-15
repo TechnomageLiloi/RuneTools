@@ -2,6 +2,8 @@
 
 namespace Liloi\Tools\Data;
 
+use Judex\Assert;
+
 /**
  * Abstract data adapter.
  */
@@ -34,6 +36,11 @@ class Adapter
 
     static public function create(IConnection $connection)
     {
-        return new self($connection);
+        $classConnection = get_class($connection);
+        $classAdapter = str_replace('Connection', 'Adapter', $classConnection);
+
+        Assert::true(class_exists($classAdapter));
+
+        return new $classAdapter($connection);
     }
 }

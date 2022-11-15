@@ -3,7 +3,8 @@
   "license": "Apache-2.0",
   "description": "Models, collections, various managers, etc.",
   "require": {
-    "php": "^7.0 || ^8.0"
+    "php": "^7.0 || ^8.0",
+    "anton-moskalenko/judex": "dev-master"
   },
   "type": "library",
   "keywords": [
