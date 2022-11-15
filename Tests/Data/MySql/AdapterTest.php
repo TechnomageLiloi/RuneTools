@@ -126,4 +126,28 @@ class AdapterTest extends TestCase
         $this->assertEquals('Test', $row['title']);
         $this->assertEquals('Test', $row['summary']);
     }
+
+    public function testGetArray(): void
+    {
+        $this->getAdapter()->insert('test', [
+            'key_record' => 1,
+            'title' => 'Test',
+            'summary' => 'Test'
+        ]);
+        $this->getAdapter()->insert('test', [
+            'key_record' => 2,
+            'title' => 'Test2',
+            'summary' => 'Test2'
+        ]);
+
+        $row = $this->getAdapter()->getArray('select * from test order by key_record asc;');
+
+        $this->assertEquals(1, $row[0]['key_record']);
+        $this->assertEquals('Test', $row[0]['title']);
+        $this->assertEquals('Test', $row[0]['summary']);
+
+        $this->assertEquals(2, $row[1]['key_record']);
+        $this->assertEquals('Test2', $row[1]['title']);
+        $this->assertEquals('Test2', $row[1]['summary']);
+    }
 }

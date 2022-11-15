@@ -85,4 +85,26 @@ class Adapter extends DataAdapter
 
         return $request->fetch_assoc();
     }
+
+    /**
+     * Get info in associative array form.
+     *
+     * @param string $query Request query.
+     * @return array Associative array form.
+     */
+    public function getArray(string $query): array {
+        $request = $this->getConnection()->request($query);
+
+        if(!$request) {
+            return [];
+        }
+
+        $list = [];
+
+        while($row = $request->fetch_assoc()) {
+            $list[] = $row;
+        }
+
+        return $list;
+    }
 }
