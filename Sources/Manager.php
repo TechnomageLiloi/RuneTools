@@ -3,9 +3,9 @@
 namespace Liloi\Tools;
 
 /**
- * Abstract repository.
+ * Abstract manager.
  */
-class Repository
+class Manager
 {
 
 }
