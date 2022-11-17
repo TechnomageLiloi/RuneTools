@@ -22,7 +22,7 @@ class Entity
      */
     public static function create(array $data): self
     {
-        return new self($data);
+        return new static($data);
     }
 
     /**
