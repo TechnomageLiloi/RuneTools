@@ -38,7 +38,7 @@ class Manager
      * Gets configuration pool.
      * @param Pool $configuration
      */
-    public static function setConfig(Pool $configuration): void
+    public static function setConfiguration(Pool $configuration): void
     {
         // @ToDo: [rune:config:] Pool must not be fully static.
         self::$configuration = $configuration;
