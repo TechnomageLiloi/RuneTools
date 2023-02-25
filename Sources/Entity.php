@@ -77,4 +77,25 @@ class Entity
     {
         $this->data[$key] = $value;
     }
+
+    /**
+     * Magic call for set/get methods.
+     *
+     * @param $function
+     * @param $args
+     * @return mixed
+     */
+    public function __call($function, $args) {
+
+        if(str_starts_with($function, 'get'))
+        {
+            return $this->getField(strtolower(str_replace('get', '', $function)));
+        }
+
+        if(str_starts_with($function, 'set'))
+        {
+            $key = strtolower(str_replace('set', '', $function));
+            $this->data[$key] = reset($args);
+        }
+    }
 }
