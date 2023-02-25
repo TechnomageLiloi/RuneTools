@@ -65,4 +65,16 @@ class Entity
     {
         return $this->data[$key];
     }
+
+    /**
+     * Set field to data.
+     *
+     * @param string $key Field key.
+     * @param mixed $value
+     * @return mixed Field data.
+     */
+    public function setField(string $key, $value): void
+    {
+        $this->data[$key] = $value;
+    }
 }
