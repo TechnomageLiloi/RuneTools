@@ -23,7 +23,7 @@ class EntityTest extends TestCase
 
     public function testMagicCall(): void
     {
-        $test = '1524jkh0-3asd,.bjk';
+        $test = '1ї524jkh0ґ-3asd,.bjk';
         $entity = Entity::create([]);
         $entity->setTest($test);
         $this->assertEquals($test, $entity->getTest());
