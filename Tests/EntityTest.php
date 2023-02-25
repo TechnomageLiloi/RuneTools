@@ -20,4 +20,12 @@ class EntityTest extends TestCase
         $this->assertEquals($data['a'], $entity->getField('a'));
         $this->assertEquals($data['b'], $entity->getField('b'));
     }
+
+    public function testMagicCall(): void
+    {
+        $test = '1ї524jkh0ґ-3asd,.bjk';
+        $entity = Entity::create([]);
+        $entity->setTest($test);
+        $this->assertEquals($test, $entity->getTest());
+    }
 }

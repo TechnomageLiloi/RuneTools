@@ -65,4 +65,37 @@ class Entity
     {
         return $this->data[$key];
     }
+
+    /**
+     * Set field to data.
+     *
+     * @param string $key Field key.
+     * @param mixed $value
+     * @return mixed Field data.
+     */
+    public function setField(string $key, $value): void
+    {
+        $this->data[$key] = $value;
+    }
+
+    /**
+     * Magic call for set/get methods.
+     *
+     * @param $function
+     * @param $args
+     * @return mixed
+     */
+    public function __call($function, $args) {
+
+        if(str_starts_with($function, 'get'))
+        {
+            return $this->getField(strtolower(str_replace('get', '', $function)));
+        }
+
+        if(str_starts_with($function, 'set'))
+        {
+            $key = strtolower(str_replace('set', '', $function));
+            $this->data[$key] = reset($args);
+        }
+    }
 }

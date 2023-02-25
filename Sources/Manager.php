@@ -3,7 +3,7 @@
 namespace Liloi\Tools;
 
 use Liloi\Config\Pool;
-use Judex\Exceptions\GeneralException;
+use Liloi\Tools\Errors\NotDefinedException;
 
 /**
  * Abstract manager.
@@ -22,13 +22,13 @@ class Manager
      * Gets configuration pool.
      *
      * @return Pool Configuration pool.
+     * @throws NotDefinedException
      */
     public static function getConfiguration(): Pool
     {
         if(is_null(self::$configuration))
         {
-            // @ToDo: [rune:judex:] Add NotDefinedException
-            throw new GeneralException('Configuration is not defined.');
+            throw new NotDefinedException('Configuration is not defined.');
         }
 
         return self::$configuration;
