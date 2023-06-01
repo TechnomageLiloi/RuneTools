@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Rune Tools Tests</title>
+  <title>Tests manager</title>
 </head>
 
 <div style="background-color: black; color: white;padding: 5px;margin: 0px;">
