@@ -2,7 +2,7 @@
 
 namespace Liloi\Tools\Data;
 
-use Judex\Assert;
+use Liloi\Judex\Assert;
 
 /**
  * Abstract data adapter.

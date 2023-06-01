@@ -2,7 +2,7 @@
 
 namespace Liloi\Tools\Service;
 
-use Judex\Assert;
+use Liloi\Judex\Assert;
 
 /**
  * Pool service.
