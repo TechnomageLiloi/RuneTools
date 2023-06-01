@@ -1,11 +1,11 @@
 {
-  "name": "anton-moskalenko/rune-tools",
+  "name": "technomage-liloi/rune-tools",
   "license": "Apache-2.0",
   "description": "Models, collections, various managers, etc.",
   "require": {
     "php": "^7.0 || ^8.0",
-    "anton-moskalenko/rune-config": "dev-main",
-    "anton-moskalenko/judex": "dev-master"
+    "technomage-liloi/rune-config": "dev-main",
+    "technomage-liloi/judex": "dev-main"
   },
   "type": "library",
   "keywords": [
